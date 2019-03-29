@@ -29,7 +29,7 @@ class HomeController
             }
         }
 
-        return $result;
+        return json_encode($result);
     }
 
     private function splitText($file, &$sentences, $isSecondFile)
@@ -54,7 +54,7 @@ class HomeController
 
     private function addKey($key, &$array, $isSecondFile)
     {
-        if (isset($array[$key])) {
+        if (isset($array[$key]) && $isSecondFile) {
             $array[$key]++;
         }
         else if (!$isSecondFile) {

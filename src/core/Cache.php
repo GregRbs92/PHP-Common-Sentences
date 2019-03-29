@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Core;
 
+use Core\Response;
+
 class Cache
 {
     public static function isCached($request)
@@ -14,7 +16,8 @@ class Cache
         
         if(file_exists($cache) && filemtime($cache) > $expire)
         {
-            readfile($cache);
+            $response = file_get_contents($cache);
+            Response::send($response);
             return true;
         }
 
@@ -29,7 +32,7 @@ class Cache
 
     private static function generateFileName($request)
     {
-        $fileName = $_SERVER['REQUEST_URI'];
+        $fileName = $_SERVER['REQUEST_URI'] ?? '';
         foreach ($request as $key => $value) {
             $fileName = $fileName . $key . $value;
         }

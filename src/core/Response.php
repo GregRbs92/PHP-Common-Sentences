@@ -9,7 +9,6 @@ class Response
     public static function send($response)
     {
         header('Content-Type: application/json');
-        $response = json_encode($response);
         echo $response;
         return $response;
     } 

@@ -9,8 +9,8 @@ class CliRequest implements RequestHandlerInterface
     public static function create()
     {
         return [
-            'filePath1' => $_SERVER['argv'][1],
-            'filePath2' => $_SERVER['argv'][2]
+            'firstFile' => $_SERVER['argv'][1],
+            'secondFile' => $_SERVER['argv'][2]
         ];
     }
 }
