@@ -36,6 +36,6 @@ class Cache
         foreach ($request as $key => $value) {
             $fileName = $fileName . $key . $value;
         }
-        return base64_encode($fileName);
+        return hash('crc32', $fileName);
     }
 }

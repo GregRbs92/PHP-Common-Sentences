@@ -25,7 +25,7 @@ class Request
     private static function handleHttpRequest()
     {
         // Get request's content type
-        $contentType = $_SERVER['CONTENT_TYPE'];
+        $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
         switch ($contentType) {
         case 'application/json':
             return JsonHttpRequest::create();
